@@ -225,7 +225,7 @@
 				processData: false,
 				success: function (data) {
 					if (data == 1) {
-						window.location = mainurl + "/user/dashboard";
+						window.location = mainurl + "/?a=login";
 					} else {
 						if (data.errors) {
 							$("#registerform .alert-success").hide();
