@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="logo.tpl"}
 
 {literal}
 <script language=javascript>
@@ -129,4 +129,4 @@ To: <select name=month_to class=inpts>
 
 {paginator col=$paginator.col cur=$paginator.cur url="javascript:go('%s')"}
 
-{include file="footer.tpl"}
+{include file="footer2.tpl"}

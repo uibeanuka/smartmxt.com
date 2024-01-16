@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="logo.tpl"}
 
 
 {if $settings.use_referal_program == 1 && $ref_plans}
@@ -31,4 +31,4 @@ Level {$ref_levels[rl].level}: <b>{$ref_levels[rl].percent}%</b><br>
 
 
 
-{include file="footer.tpl"}
+{include file="footer2.tpl"}

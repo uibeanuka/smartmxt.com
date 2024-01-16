@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2024-01-12 16:35:12
+<?php /* Smarty version 3.1.27, created on 2024-01-14 06:08:41
          compiled from "/home/u632593968/domains/primeautotrade.com/public_html/tmpl/footer.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:90720088765a16a400361f5_97097014%%*/
+/*%%SmartyHeaderCode:103399776065a37a696048f8_85780403%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,20 +9,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '77abfcfa45c3168ed25852518a2749ff102a8318' => 
     array (
       0 => '/home/u632593968/domains/primeautotrade.com/public_html/tmpl/footer.tpl',
-      1 => 1705075684,
+      1 => 1705128530,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '90720088765a16a400361f5_97097014',
+  'nocache_hash' => '103399776065a37a696048f8_85780403',
+  'variables' => 
+  array (
+    'settings' => 0,
+  ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_65a16a40045093_10191506',
+  'unifunc' => 'content_65a37a6961a361_10665524',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_65a16a40045093_10191506')) {
-function content_65a16a40045093_10191506 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_65a37a6961a361_10665524')) {
+function content_65a37a6961a361_10665524 ($_smarty_tpl) {
+if (!is_callable('smarty_modifier_myescape')) require_once '/home/u632593968/domains/primeautotrade.com/public_html/inc/libs/smarty3/plugins/modifier.myescape.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '90720088765a16a400361f5_97097014';
+$_smarty_tpl->properties['nocache_hash'] = '103399776065a37a696048f8_85780403';
 ?>
 
    
@@ -50,25 +55,6 @@ $_smarty_tpl->properties['nocache_hash'] = '90720088765a16a400361f5_97097014';
                      
                 
    <p><font color="white" family=" Arial, sans-serif" align="center" margin"50px"><span id="onlineCount">0</span> Investors Currently Online</p></font>
-
-  <?php echo '<script'; ?>
->
-    function updateOnlineCount() {
-      // Generate a random number within the range 1010 - 1900
-      const peopleOnline = Math.floor(Math.random() * (1900 - 1010 + 1)) + 1010;
-
-      // Update the HTML element with the new count
-      document.getElementById('onlineCount').textContent = peopleOnline;
-    }
-
-    // Initial update
-    updateOnlineCount();
-
-    // Update the count every 30 seconds (30,000 milliseconds)
-    setInterval(updateOnlineCount, 30000);
-  <?php echo '</script'; ?>
->
-                     
                      
                        <div style="position:relative;">
                 <div id="google_translate_element" style="display: flex; place-content: center;"></div>
@@ -124,7 +110,8 @@ $_smarty_tpl->properties['nocache_hash'] = '90720088765a16a400361f5_97097014';
 <LI><a href="cdn-cgi/l/email-protection.html#dcafa9acacb3aea89cafb1bdaea8b1a4a8f2bfb3b1">
   <i class="fas fa-envelope" style="font-size: 30px; color: white;"></i>
 </a> &nbsp;&nbsp;&nbsp;  
-<a href="https://t.me/{$settings.site_name}bot" target="new">
+<a href="https://t.me/<?php echo smarty_modifier_myescape($_smarty_tpl->tpl_vars['settings']->value['site_name']);?>
+bot" target="new">
   <i class="fab fa-telegram" style="font-size: 30px; color: #0088cc;"></i>
 </a> &nbsp;&nbsp;&nbsp; 
 <a href="https://wa.me/0">
@@ -154,12 +141,9 @@ $_smarty_tpl->properties['nocache_hash'] = '90720088765a16a400361f5_97097014';
                             </li>
                                             </ul>
                     <div class="text--light w-100 mw-100 text-center">
-                        <p>"Empowering Futures Through Strategic Investments | {$settings.site_name} - Where Vision Meets Value"<br></p> 
-                        <?php echo '<script'; ?>
- data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"><?php echo '</script'; ?>
-><?php echo '<script'; ?>
- type="text/javascript" id="zsiqchat">var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq || {widgetcode: "siqb5f185832f1ac2b1a9ebf773812b7e44513babe71924bca5490276c04c2e54bc", values:{},ready:function(){}};var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;s.src="../salesiq.zohopublic.com/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);<?php echo '</script'; ?>
->                    </div>
+                        <p>"Empowering Futures Through Strategic Investments | <?php echo smarty_modifier_myescape($_smarty_tpl->tpl_vars['settings']->value['site_name']);?>
+ - Where Vision Meets Value"<br></p> 
+                                          </div>
                 </div>
             </div>
         </div>
@@ -170,83 +154,8 @@ $_smarty_tpl->properties['nocache_hash'] = '90720088765a16a400361f5_97097014';
     </footer>
     <!-- Footer -->
     
-         <!-- Footer -->
+       
 
-    <div class="cookie-bar-wrap show js-cookie-consent cookie-consent">
-    <div class="container d-flex justify-content-center">
-        <div class="col-xl-10 col-lg-12">
-            <div class="row justify-content-center">
-                <div class="cookie-bar">
-                    <div class="cookie-bar-text cookie-consent__message">
-                        Step into a world of unparalleled trading excellence! 🚀 We are thrilled to welcome you to our platform where remarkable ROI, referral bonuses, and airdrops await. Your security is paramount – our site boasts top-notch protection. Keep your login details confidential; your success is in safe hands.Happy trading!
-                    </div> 
-                    <div class="cookie-bar-action js-cookie-consent-agree cookie-consent__agree">
-                        <button class="btn btn-accept cmn--btn text-white" >
-                           
-                            <a
-                              
-                              href="?a=login"
-                              > <b><font color="white">REGISTER</font></b></a
-                            >
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-    <?php echo '<script'; ?>
->
-
-        window.laravelCookieConsent = (function () {
-
-            const COOKIE_VALUE = 1;
-            const COOKIE_DOMAIN = '{$settings.site_name}';
-
-            function consentWithCookies() {
-                setCookie('laravel_cookie_consent', COOKIE_VALUE, 7300);
-                hideCookieDialog();
-            }
-
-            function cookieExists(name) {
-                return (document.cookie.split('; ').indexOf(name + '=' + COOKIE_VALUE) !== -1);
-            }
-
-            function hideCookieDialog() {
-                const dialogs = document.getElementsByClassName('js-cookie-consent');
-
-                for (let i = 0; i < dialogs.length; ++i) {
-                    dialogs[i].style.display = 'none';
-                }
-            }
-
-            function setCookie(name, value, expirationInDays) {
-                const date = new Date();
-                date.setTime(date.getTime() + (expirationInDays * 24 * 60 * 60 * 1000));
-                document.cookie = name + '=' + value
-                    + ';expires=' + date.toUTCString()
-                    + ';domain=' + COOKIE_DOMAIN
-                    + ';path=/'
-                    + '';
-            }
-
-            if (cookieExists('laravel_cookie_consent')) {
-                hideCookieDialog();
-            }
-
-            const buttons = document.getElementsByClassName('js-cookie-consent-agree');
-
-            for (let i = 0; i < buttons.length; ++i) {
-                buttons[i].addEventListener('click', consentWithCookies);
-            }
-
-            return {
-                consentWithCookies: consentWithCookies,
-                hideCookieDialog: hideCookieDialog
-            };
-        })();
-    <?php echo '</script'; ?>
->
 
 
 
@@ -254,7 +163,8 @@ $_smarty_tpl->properties['nocache_hash'] = '90720088765a16a400361f5_97097014';
     <div class="modal fade" id="invest-modal">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form class="investForm" action="https://{$settings.site_name}/?a=login" method="POST">
+                <form class="investForm" action="https://<?php echo smarty_modifier_myescape($_smarty_tpl->tpl_vars['settings']->value['site_name']);?>
+/?a=login" method="POST">
                     <input type="hidden" name="_token" value="eXGkCKMrr4Ftcxpp3w7OhBRt0vJNOReUjL2GFKSK">                    <div class="modal-body p-4">
                         <h4 class="modal-title text-center plan-title">Basic Plan</h4>
                         <div class="pt-3 pb-4">
@@ -293,6 +203,25 @@ $_smarty_tpl->properties['nocache_hash'] = '90720088765a16a400361f5_97097014';
                             place-content: center;
                         "></div>
                 
+  <?php echo '<script'; ?>
+>
+    function updateOnlineCount() {
+      // Generate a random number within the range 1010 - 1900
+      const peopleOnline = Math.floor(Math.random() * (1900 - 1010 + 1)) + 1010;
+
+      // Update the HTML element with the new count
+      document.getElementById('onlineCount').textContent = peopleOnline;
+    }
+
+    // Initial update
+    updateOnlineCount();
+
+    // Update the count every 30 seconds (30,000 milliseconds)
+    setInterval(updateOnlineCount, 30000);
+  <?php echo '</script'; ?>
+>
+                     
+
                         <?php echo '<script'; ?>
  type="text/javascript">
                             function googleTranslateElementInit() {
@@ -376,7 +305,7 @@ $_smarty_tpl->properties['nocache_hash'] = '90720088765a16a400361f5_97097014';
     <?php echo '<script'; ?>
 >
         'use strict';
-    let mainurl = 'index.html';
+    let mainurl = '#';
   <?php echo '</script'; ?>
 >
 

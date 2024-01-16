@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="logo.tpl"}
 
 <h3>Referrers Top 20</h3>
 
@@ -27,4 +27,4 @@
 {/if}
 </table>
 <br><br>Last reset on {$start_date}
-{include file="footer.tpl"}
+{include file="footer2.tpl"}

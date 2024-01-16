@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="logo.tpl"}
 
 {literal}
 
@@ -271,4 +271,4 @@ document.getElementById('tfa_time').value = (new Date()).getTime();
 </tr></table>
 </form>
 
-{include file="footer.tpl"}
+{include file="footer2.tpl"}

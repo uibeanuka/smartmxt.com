@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="logo.tpl"}
 
 <h3>Referral Links.</h3><br><br>
 
@@ -42,4 +42,4 @@ XX% daily for X weeks - total XX% guaranteed
 
 
 
-{include file="footer.tpl"}
+{include file="footer2.tpl"}

@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="logo.tpl"}
 
 {if $fatal}
 
@@ -109,173 +109,145 @@ Your total deposit in &quot;{$errors.deposits_amount_exeeded.plan|escape:html}&q
 {/if}
 {/if}
 
-<form method=post name="spendform">
-<input type=hidden name=a value=deposit>
-{if $qplans > 1} Select a plan:<br>{/if}
+<div style="position: relative; width: 100%; height: 200px; overflow: hidden;">
+  <img src="https://smartmxt.com/deposit.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="">
+  <div style="position: absolute; top: 10px; right: 10px; background: rgba(0, 0, 0, 0.5); color: white; font-size: 20px; font-weight: bold; padding: 5px;">Make A Deposit</div></div>
+<div class="dashboard--content-item">
+  <div class="row g-3">
+    <div class="col-12">
+      <div class="card default--card">
+          <div class="card-body">
+                    <form id="deposit-form" action="" method="POST" enctype="multipart/form-data">
+              <input type="hidden" name="_token" value="TKAJDpEIfsXwiR4enQ6gjQLZ1FiEiWGj8jBDxzAx">
+              <div class="row gy-3 gy-md-4">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="form-label required">Select Payment Method <font color="red"><small>(required)</small></font></label>
+                        <select name="method" id="withmethod" class="form-control" required>
+                            <option value="">Select Cryptocurrency</option>
+                                                                                                        <option value="Manual" data-details="&lt;p&gt;&lt;b&gt;Here&#039;s a simple guide for a successful transaction:&lt;/b&gt;&lt;/p&gt;&lt;p&gt;1. Send the amount to the Ethereum (ETH) Wallet provided.&lt;br&gt;&lt;span style=&quot;font-size: 1rem;&quot;&gt;2. Take a screenshot of the success message.&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;font-size: 1rem;&quot;&gt;3. Copy the Transaction Hash/ID from your wallet.&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;font-size: 1rem;&quot;&gt;4. Paste the Transaction Hash/ID in the given space.&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;font-size: 1rem;&quot;&gt;5. Upload the screenshot for validation.&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;font-size: 1rem;&quot;&gt;6. One request per transaction, please.&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;font-size: 1rem;&quot;&gt;7. You&#039;ll get an email confirmation once your deposit is approved.&lt;/span&gt;&lt;/p&gt;" data-info="0xf30d85Ba7318c2973A8Bb699570814d78Dc949f5">ETHEREUM (ETH)</option>
+                                                                                                                                                                            <option value="Manual" data-details="&lt;p&gt;&lt;span style=&quot;font-weight: bolder;&quot;&gt;Here&#039;s a simple guide for a successful transaction:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;1. Send the amount to the Bitcoin (BTC) Wallet provided.&lt;br&gt;&lt;span style=&quot;font-size: 1rem;&quot;&gt;2. Take a screenshot of the success message.&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;font-size: 1rem;&quot;&gt;3. Copy the Transaction Hash/ID from your wallet.&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;font-size: 1rem;&quot;&gt;4. Paste the Transaction Hash/ID in the given space.&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;font-size: 1rem;&quot;&gt;5. Upload the screenshot for validation.&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;font-size: 1rem;&quot;&gt;6. One request per transaction, please.&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;font-size: 1rem;&quot;&gt;7. You&#039;ll get an email confirmation once your deposit is approved.&lt;/span&gt;&lt;/p&gt;" data-info="14iStybUCA3Fe9ZzYb7aYVrCwEgoJJZy51">BITCOIN (BTC)</option>
+                                                                                                                   
+                        </select>
+                    </div>
+                </div>
 
 
-{foreach from=$plans item=plan name=fplans}
-<table cellspacing=1 cellpadding=2 border=0 width=100%>
-<tr>
- <td colspan=3>
-{if $plans|@count > 1}
-	<input type=radio name=h_id value="{$plan.id}" {if (($smarty.foreach.fplans.first == 1) && (!$frm.h_id)) || ($frm.h_id == $plan.id)} checked {/if} onclick="updateCompound()"> 
-{else}
-	<input type=hidden name=h_id value="{$plan.id}">
-{/if}
+                <input type="hidden" name="currency_sign" value="$">
+                <input type="hidden" id="currencyCode" name="currency_code" value="USD">
+                <input type="hidden" name="currency_id" value="1">
 
-<b>{$plan.name|escape:html}</b></td>
-</tr><tr>
- <td class=inheader>Plan</td>
- <td class=inheader width=200>Spent Amount (<span class="fiat">{fiat}</span>)</td>
- <td class=inheader width=100 nowrap><nobr>{$plan.period} Profit (%)</nobr></td>
-</tr>
-{foreach from=$plan.plans item=o}
-<tr>
- <td class=item>{$o.name|escape:html}</td>
- <td class=item align=right><span class="min_deposit">{$o.min_deposit}</span> - <span class="max_deposit">{if $o.max_deposit == 0}&infin;{else}{$o.max_deposit}{/if}</span></td>
- <td class=item align=right>{$o.percent}%</td>
-</tr>
-{/foreach}
-{if $settings.enable_calculator}
-<tr>
- <td colspan=3 align=right><a href="javascript:openCalculator('{$plan.id}')">Calculate your profit &gt;&gt;</a></td>
-</tr>
-{/if}
-</table><br><br>
-<script>
-cps[{$plan.id}] = {$plan.compound_percents_json};
-</script>
-{/foreach}
+            
+                
+                <div class="col-sm-6">
+  <div class="form-group">
+    <label class="form-label required">How Much Do You Want To Deposit <font color="red"><small>(required)</small></font></label>
+    <input name="amount" id="amount" class="form-control" autocomplete="off" placeholder="Enter amount in USD" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" type="text" value="" min="1" required>
+  </div>
+</div>
+                
+                
+                
+                <div class="col-sm-12">
+                    <div id="card-view" class="col-md-12 d-none">
+                        <div class="row gy-3">
+                            <input type="hidden" name="cmd" value="_xclick">
+                            <input type="hidden" name="no_note" value="1">
+                            <input type="hidden" name="lc" value="UK">
+                            <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynow_LG.gif:NonHostedGuest">
+    
+                            <div class="col-md-6">
+                                <input type="text" class="form-control card-elements" name="cardNumber" placeholder="Card Number" autocomplete="off" required autofocus oninput="validateCard(this.value);"/>
+                                <span id="errCard"></span>
+                            </div>
+    
+                            <div class="col-lg-6 cardRow">
+                                <input type="text" class="form-control card-elements" placeholder="Card CVC" name="cardCVC" oninput="validateCVC(this.value);">
+                                <span id="errCVC"></span>
+                            </div>
+    
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control card-elements" placeholder="Month" name="month" >
+                            </div>
+    
+                            <div class="col-lg-6">
+                                <input type="text" class="form-control card-elements" placeholder="Year" name="year">
+                            </div>
+    
+                        </div>
+                    </div>
+                </div>
 
-{*
-{section name=plans loop=$plans}
-<table cellspacing=1 cellpadding=2 border=0 width=100%>
-<tr>
- <td colspan=3>
-{if $qplans > 1}
-	<input type=radio name=h_id value='{$plans[plans].id}' {if (($smarty.section.plans.first == 1) && ($frm.h_id eq '')) || ($frm.h_id == $plans[plans].id)} checked {/if} onclick="updateCompound()"> 
-<!--	<input type=radio name=h_id value='{$plans[plans].id}' {if (($smarty.section.plans.first == 1) && ($frm.h_id eq '')) || ($frm.h_id == $plans[plans].id)} checked {/if} {if $compounding_available > 0}onclick="document.spendform.compound.disabled={if $plans[plans].use_compound == 1}false{else}true{/if};"{/if}> -->
-{else}
-	<input type=hidden name=h_id value='{$plans[plans].id}'>
-{/if}
+                <div class="col-sm-12 mt-4 manual-payment d-none">
+                    <div class="card default--card">
+                      <div class="card-body">
+                        <div class="row">
+                            
+                            
+                            <center><H6><B><FONT COLOR="GREEN">CRYPTO PAYMENT INFORMATION</FONT></B></H6></center>
+                            
+                              
+                              
+                              <div class="col-sm-12 pb-2 pt-2 manual-payment-info">
+                                  
+                              </div>
+                              
+                        
+                          
+                          
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-12 pt-4">
+                            <label class="form-label required">Transaction Hash/ID/Wallet Name <font color="red"><small>(required)</small></font></label>
+                            <input class="form-control" name="txn_id4" type="text" placeholder="Transaction ID" id="manual_transaction_id">
+                    </div>
+                    <div class="col-sm-12 pt-4">
+                            <label class="form-label required">Payment Completed Proof <font color="red"><small>(required)</small></font></label>
+                            <input class="form-control" type="file" name="proof" accept=".jpeg, .jpg, .png" onchange="displaySelectedImage(this)" required>
+                            <img id="selectedImage" alt="Selected Image" style="width: auto;height: auto;max-width: 420px;margin-top: 10px;display: none;">
+                    </div><div class="col-sm-12 pb-2 pt-2 manual-payment-details">
+                                  
+                              </div>
+                </div>
+                
+                <div class="col-sm-12">
+                    <div class="col-sm-12">
+                            
+                            <input class="form-control" name="details" type="hidden" value="binance" placeholder="Wallet Deposit was made from" id="manual_transaction_id">
+                          </div>
+                    
+                </div><br>
 
-	<b>{$plans[plans].name}</b></td>
-</tr><tr>
- <td class=inheader>Plan</td>
- <td class=inheader width=200>Spent Amount ({$currency_sign})</td>
- <td class=inheader width=100 nowrap><nobr>{$plans[plans].period} Profit (%)</nobr></td>
-</tr>
-{section name=options loop=$plans[plans].plans}
-<tr>
- <td class=item>{$plans[plans].plans[options].name|escape:html}</td>
- <td class=item align=right>{$plans[plans].plans[options].deposit}</td>
- <td class=item align=right>{$plans[plans].plans[options].percent}</td>
-</tr>
-{/section}
-{if $settings.enable_calculator}
-<tr>
- <td colspan=3 align=right><a href="javascript:openCalculator('{$plans[plans].id}')">Calculate your profit &gt;&gt;</a></td>
-</tr>
-{/if}
-</table><br><br>
-<script>
-cps[{$plans[plans].id}] = {$plans[plans].compound_percents_json};
-</script>
-{/section}
-*}
+                <div class="col-sm-12">
+                  <button type="submit" class="cmn--btn bg--primary submit-btn w-100 border-0">CLICK TO COMPLETE DEPOSIT REQUEST</button>
 
-<table cellspacing=0 cellpadding=2 border=0>
-<tr>
- <td>Account Balance:</td>
- <td>{$currency_sign}<b>{$userinfo.balance_totals.balance|amount_format}</b></td>
-</tr>
-</table>
-<br>
-<table cellspacing=0 cellpadding=2 border=0>
-<tr>
- <th>Processing</th>
- <th>Topup</th>
- <th>Balance</th>
-</tr>
-{foreach from=$dps item=p name=p}
-<tr>
- <td><img src="images/{$p.id}.gif" width="44" height="17" align="absmiddle"> {$p.name}:</td>
- <td><input type=radio name=type value="process_{$p.id}" {if $frm.type == "process_`$p.id`"}checked{/if} data-fiat="{$p.fiat}"></td>
- <td><input type=radio name=type value="account_{$p.id}" {if $frm.type == "account_`$p.id`"}checked{/if} data-fiat="{$p.fiat}" {if $p.available <= 0}disabled{/if}> {$p.available|fiat:$p.id}</td>
-</tr>
-{/foreach}
-</table>
-<br>
-<table cellspacing=0 cellpadding=2 border=0>
-<tr>
- <td>Amount to Spend ({$currency_sign}):</td>
- <td align=right><input type=text name=amount value='{$frm.amount|default:$min_deposit|amount_format}' class=inpts size=15 style="text-align:right;"></td>
-</tr>
-<tr id="coumpond_block" style="display:none">
- <td>Compounding(%):</td>
- <td align=right>
-  <select name="compound" class=inpts id="compound_percents"></select>
- </td>
-</tr>
-<tr>
- <td colspan=2><input type=submit value="Spend" class=sbmt></td>
-</tr>
-</table>
+                </div>
+              </div>
 
-{*
-<table cellspacing=0 cellpadding=2 border=0>
-<tr>
- <td>Your account balance ({$currency_sign}):</td>
- <td align=right>{$currency_sign}{$ab_formated.total}</td>
-</tr>
-<tr><td>&nbsp;</td>
- <td align=right>
-  <small>
-{section name=p loop=$ps}
-   {if $ps[p].balance > 0}{$currency_sign}{$ps[p].balance} of {$ps[p].name}{if $hold[p].amount > 0} / {$currency_sign}{$hold[p].amount} on hold{/if}<br>{/if}
-{/section}
-  </small>
- </td>
-</tr>
-<tr>
- <td>Amount to Spend ({$currency_sign}):</td>
- <td align=right><input type=text name=amount value='{$frm.amount|default:$min_deposit|amount_format}' class=inpts size=15 style="text-align:right;"></td>
-</tr>
-<tr id="coumpond_block" style="display:none">
- <td>Compounding(%):</td>
- <td align=right>
-  <select name="compound" class=inpts id="compound_percents"></select>
- </td>
-</tr>
-<tr>
-  <td colspan=2>
-   <table cellspacing=0 cellpadding=2 border=0>
-{section name=p loop=$ps}
-   {if $ps[p].balance > 0 and $ps[p].status == 1}
-    <tr>
-     <td><input type=radio name=type value="account_{$ps[p].id}" {if $frm.type == "account_`$ps[p].id`"}checked{/if}></td>
-     <td>Spend funds from the Account Balance {$ps[p].name}</td>
-    </tr>
-   {/if}
-{/section}
-{section name=p loop=$ps}
-   {if $ps[p].status}
-    <tr>
-     <td><input type=radio name=type value="process_{$ps[p].id}" {if $frm.type == "process_`$ps[p].id`"}checked{/if}{if !$frm.type && $smarty.section.p.index == 0}checked{/if}></td>
-     <td>Spend funds from {$ps[p].name}</td>
-    </tr>
-   {/if}
-{/section}
-   </table>
-  </td>
-</tr>
-<tr>
- <td colspan=2><input type=submit value="Spend" class=sbmt></td>
-</tr></table>
-*}
+          </form>
+        </div>
+      </div>
+  </div>
+  </div>
+</div>
 
-</form>
+
+<style>
+    #qrcode{
+        background: #fff;
+        padding: 1.5rem;
+        /*margin: 2rem 0;*/
+    }
+    
+    .manual-payment-info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        text-align: center;
+    }
+</style>
 {literal}
 <script language=javascript>
 /*
@@ -291,4 +263,4 @@ updateCompound();
 {/literal}
 
 {/if}
-{include file="footer.tpl"}
+{include file="footer2.tpl"}

@@ -24,23 +24,6 @@
                      
                 
    <p><font color="white" family=" Arial, sans-serif" align="center" margin"50px"><span id="onlineCount">0</span> Investors Currently Online</p></font>
-{literal}
-  <script>
-    function updateOnlineCount() {
-      // Generate a random number within the range 1010 - 1900
-      const peopleOnline = Math.floor(Math.random() * (1900 - 1010 + 1)) + 1010;
-
-      // Update the HTML element with the new count
-      document.getElementById('onlineCount').textContent = peopleOnline;
-    }
-
-    // Initial update
-    updateOnlineCount();
-
-    // Update the count every 30 seconds (30,000 milliseconds)
-    setInterval(updateOnlineCount, 30000);
-  </script>
-                     
                      
                        <div style="position:relative;">
                 <div id="google_translate_element" style="display: flex; place-content: center;"></div>
@@ -121,7 +104,7 @@
                                             </ul>
                     <div class="text--light w-100 mw-100 text-center">
                         <p>"Empowering Futures Through Strategic Investments | {$settings.site_name} - Where Vision Meets Value"<br></p> 
-                        <script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" id="zsiqchat">var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq || {widgetcode: "siqb5f185832f1ac2b1a9ebf773812b7e44513babe71924bca5490276c04c2e54bc", values:{},ready:function(){}};var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;s.src="../salesiq.zohopublic.com/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);</script>                    </div>
+                                          </div>
                 </div>
             </div>
         </div>
@@ -132,81 +115,8 @@
     </footer>
     <!-- Footer -->
     
-         <!-- Footer -->
+       
 
-    <div class="cookie-bar-wrap show js-cookie-consent cookie-consent">
-    <div class="container d-flex justify-content-center">
-        <div class="col-xl-10 col-lg-12">
-            <div class="row justify-content-center">
-                <div class="cookie-bar">
-                    <div class="cookie-bar-text cookie-consent__message">
-                        Step into a world of unparalleled trading excellence! 🚀 We are thrilled to welcome you to our platform where remarkable ROI, referral bonuses, and airdrops await. Your security is paramount – our site boasts top-notch protection. Keep your login details confidential; your success is in safe hands.Happy trading!
-                    </div> 
-                    <div class="cookie-bar-action js-cookie-consent-agree cookie-consent__agree">
-                        <button class="btn btn-accept cmn--btn text-white" >
-                           
-                            <a
-                              
-                              href="?a=login"
-                              > <b><font color="white">REGISTER</font></b></a
-                            >
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-    <script>
-
-        window.laravelCookieConsent = (function () {
-
-            const COOKIE_VALUE = 1;
-            const COOKIE_DOMAIN = '{$settings.site_name}';
-
-            function consentWithCookies() {
-                setCookie('laravel_cookie_consent', COOKIE_VALUE, 7300);
-                hideCookieDialog();
-            }
-
-            function cookieExists(name) {
-                return (document.cookie.split('; ').indexOf(name + '=' + COOKIE_VALUE) !== -1);
-            }
-
-            function hideCookieDialog() {
-                const dialogs = document.getElementsByClassName('js-cookie-consent');
-
-                for (let i = 0; i < dialogs.length; ++i) {
-                    dialogs[i].style.display = 'none';
-                }
-            }
-
-            function setCookie(name, value, expirationInDays) {
-                const date = new Date();
-                date.setTime(date.getTime() + (expirationInDays * 24 * 60 * 60 * 1000));
-                document.cookie = name + '=' + value
-                    + ';expires=' + date.toUTCString()
-                    + ';domain=' + COOKIE_DOMAIN
-                    + ';path=/'
-                    + '';
-            }
-
-            if (cookieExists('laravel_cookie_consent')) {
-                hideCookieDialog();
-            }
-
-            const buttons = document.getElementsByClassName('js-cookie-consent-agree');
-
-            for (let i = 0; i < buttons.length; ++i) {
-                buttons[i].addEventListener('click', consentWithCookies);
-            }
-
-            return {
-                consentWithCookies: consentWithCookies,
-                hideCookieDialog: hideCookieDialog
-            };
-        })();
-    </script>
 
 
 
@@ -252,7 +162,24 @@
                             display: flex;
                             place-content: center;
                         "></div>
-                
+                {literal}
+  <script>
+    function updateOnlineCount() {
+      // Generate a random number within the range 1010 - 1900
+      const peopleOnline = Math.floor(Math.random() * (1900 - 1010 + 1)) + 1010;
+
+      // Update the HTML element with the new count
+      document.getElementById('onlineCount').textContent = peopleOnline;
+    }
+
+    // Initial update
+    updateOnlineCount();
+
+    // Update the count every 30 seconds (30,000 milliseconds)
+    setInterval(updateOnlineCount, 30000);
+  </script>
+                     
+
                         <script type="text/javascript">
                             function googleTranslateElementInit() {
                               new google.translate.TranslateElement({
@@ -309,7 +236,7 @@
 
     <script>
         'use strict';
-    let mainurl = 'index.html';
+    let mainurl = '#';
   </script>
 
 

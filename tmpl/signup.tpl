@@ -1,5 +1,177 @@
 {include file="header.tpl"}
 
+ 
+
+{if $deny_registration}
+ We are closed for new registrations now.
+{elseif $settings.use_referal_program && $settings.force_upline && !$referer.id && !$settings.get_rand_ref}
+ You  do not have a upline. Our system require a upline for each user.
+{else}
+ {literal}
+
+ <script language=javascript>
+ function checkform() {
+  if (document.regform.fullname.value == '') {
+    alert("Please enter your full name!");
+    document.regform.fullname.focus();
+    return false;
+  }
+ {/literal}
+ {if $settings.use_user_location == 1}
+ {literal}
+  if (document.regform.address.value == '') {
+    alert("Please enter your address!");
+    document.regform.address.focus();
+    return false;
+  }
+  if (document.regform.city.value == '') {
+    alert("Please enter your city!");
+    document.regform.city.focus();
+    return false;
+  }
+  if (document.regform.state.value == '') {
+    alert("Please enter your state!");
+    document.regform.state.focus();
+    return false;
+  }
+  if (document.regform.zip.value == '') {
+    alert("Please enter your ZIP!");
+    document.regform.zip.focus();
+    return false;
+  }
+  if (document.regform.country.options[document.regform.country.selectedIndex].text == '--SELECT--') {
+    alert("Please choose your country!");
+    document.regform.country.focus();
+    return false;
+  }
+ {/literal}
+ {/if}
+ {literal}
+  if (document.regform.username.value == '') {
+    alert("Please enter your username!");
+    document.regform.username.focus();
+    return false;
+  }
+  if (!document.regform.username.value.match(/^[A-Za-z0-9_\-]+$/)) {
+    alert("For username you should use English letters and digits only!");
+    document.regform.username.focus();
+    return false;
+  }
+  if (document.regform.password.value == '') {
+    alert("Please enter your password!");
+    document.regform.password.focus();
+    return false;
+  }
+  if (document.regform.password.value != document.regform.password2.value) {
+    alert("Please check your password!");
+    document.regform.password2.focus();
+    return false;
+  }
+ {/literal}
+ {if $settings.use_transaction_code}
+ {literal}
+  if (document.regform.transaction_code.value == '') {
+    alert("Please enter your transaction code!");
+    document.regform.transaction_code.focus();
+    return false;
+  }
+  if (document.regform.transaction_code.value != document.regform.transaction_code2.value) {
+    alert("Please check your transaction code!");
+    document.regform.transaction_code2.focus();
+    return false;
+  }
+ {/literal}
+ {/if}
+ {literal}
+  if (document.regform.email.value == '') {
+    alert("Please enter your e-mail address!");
+    document.regform.email.focus();
+    return false;
+  }
+  if (document.regform.email.value != document.regform.email1.value) {
+    alert("Please retype your e-mail!");
+    document.regform.email.focus();
+    return false;
+  }
+
+  for (i in document.regform.elements) {
+    f = document.regform.elements[i];
+    if (f.name && f.name.match(/^pay_account/)) {
+      if (f.value == '') continue;
+      var notice = f.getAttribute('data-validate-notice');
+      var invalid = 0;
+      if (f.getAttribute('data-validate') == 'regexp') {
+        var re = new RegExp(f.getAttribute('data-validate-regexp'));
+        if (!f.value.match(re)) {
+          invalid = 1;
+        }
+      } else if (f.getAttribute('data-validate') == 'email') {
+        var re = /^[^\@]+\@[^\@]+\.\w{2,4}$/;
+        if (!f.value.match(re)) {
+          invalid = 1;
+        }
+      }
+      if (invalid) {
+        alert('Invalid account format. Expected '+notice);
+        f.focus();
+        return false;
+      }
+    }
+  }
+
+  if (document.regform.agree.checked == false) {
+    alert("You have to agree with the Terms and Conditions!");
+    return false;
+  }
+
+  return true;
+ }
+
+ function IsNumeric(sText) {
+  var ValidChars = "0123456789";
+  var IsNumber=true;
+  var Char;
+  if (sText == '') return false;
+  for (i = 0; i < sText.length && IsNumber == true; i++) { 
+    Char = sText.charAt(i); 
+    if (ValidChars.indexOf(Char) == -1) {
+      IsNumber = false;
+    }
+  }
+  return IsNumber;
+ }
+ </script>
+ {/literal}
+
+{if $errors}
+{if $errors.turing_image}<div class="error">Invalid turing image</div>{/if}
+{if $errors.no_fullname}<div class="error">Please enter your full name</div>{/if}
+{if $errors.ip_exists_in_database}<div class="error">Your IP already exists in our database. Sorry, but registration impossible</div>{/if}
+{if $errors.invalid_username}<div class="error">Please enter valid username! It should contains English letters and digits only.</div>{/if}
+{if $errors.username_too_short}<div class="error">Username should contains {$errors.username_too_short} charaters at least</div>{/if}
+{if $errors.username_exists}<div class="error">The Username is already taken. Please try another Username.</div>{/if}
+{if $errors.no_password}<div class="error">Please define a password</div>{/if}
+{if $errors.password_confirm}<div class="error">Please confirm your password correctly</div>{/if}
+{if $errors.password_too_small}<div class="error">The password you provided is too small, please enter at least {$errors.password_too_small} characters!</div>{/if} 
+{if $errors.invalid_email}<div class="error">Please valid email address</div>{/if} 
+{if $errors.email_confirm}<div class="error">Please confirm your email address correctly</div>{/if}
+{if $errors.email_exists}<div class="error">An account with this email is already exist</div>{/if}
+{if $errors.no_address}<div class="error">Please enter your address</div>{/if}
+{if $errors.no_city}<div class="error">Please enter your city</div>{/if}
+{if $errors.no_state}<div class="error">Please enter your state</div>{/if}
+{if $errors.no_zip}<div class="error">Please enter your zip</div>{/if}
+{if $errors.no_country}<div class="error">Please enter your country</div>{/if}
+{if $errors.no_transaction_code}<div class="error">Please define a transaction code</div>{/if}
+{if $errors.transaction_code_confirm}<div class="error">Please correcty confirm your transaction code</div>{/if}
+{if $errors.transaction_code_too_small}<div class="error">The transaction code you provided is too small, please enter at least {$errors.transaction_code_too_small} characters!</div>{/if} 
+{if $errors.transaction_code_vs_password}<div class="error">The Transaction Code should not be equal to the Password you have defined</div>{/if}
+{if $errors.no_agree}<div class="error">You have to agree with the Terms and Conditions!</div>{/if}
+{if $errors.invalid_account_format}
+ {foreach from=$errors.invalid_account_format item=err}
+ <div class="error">{$err}</div>
+ {/foreach}
+{/if}
+{/if} 
   <!-- Overlayer -->
     <span class="toTopBtn">
         <i class="fas fa-angle-up"></i>
@@ -24,95 +196,78 @@
                                 <p>
                                     Change your lifestyle signing up here. Invest and easily earn money for much better life                                </p>
                             </div>
-                            <form id="registerform" class="row gy-3" action="https://{$settings.site_name}/?a=signup" method="POST">
-                                <input type="hidden" name="_token" value="Q375qjfiDrkX5LEgZ1rRASUzNP7jjBQXAYqUaa7c">                                <div class="col-lg-6 col-lg-12 col-xl-6">
+                            <form class="row gy-3" method=post onsubmit="return checkform()" name="regform">
+                                <input type=hidden name=a value="signup">
+<input type=hidden name=action value="signup">
+                               <div class="col-lg-6 col-lg-12 col-xl-6">
                                     <label for="name" class="form-label">Enter Full Legal Name <font color="red" size="small"><small>(required)</small></font></label><p><small id="emailHelp" class="form-text text-muted">Please enter your name as shown on your Identity Card.</small></p>
-                                    <input type="text" name="name" id="name" class="form-control" required>
+                                    <input type="text" name="fullname"  class="form-control" required>
                                 </div>
 <hr>
                               
 <div class="col-lg-6 col-lg-12 col-xl-6">
     <label for="email" class="form-label">Your Email <font color="red" size="small"><small>(required)</small></font></label>
     <p><small id="emailHelp" class="form-text text-muted">Please enter a valid email address.</small></p>
-    <input type="email" name="email" id="email" class="form-control" required>
+    <input type="email" name="email"  class="form-control" required>
     
 </div>
 
-<script>
-    document.getElementById('email').addEventListener('input', function() {
-        var emailInput = document.getElementById('email');
-        var emailHelp = document.getElementById('emailHelp');
-        
-        var validDomains = ['gmail.com','taekniverk.is', 'yahoo.com'];
-        var enteredEmail = emailInput.value.toLowerCase();
-        var enteredDomain = enteredEmail.split('@')[1];
-        
-        var isValid = validDomains.some(function(domain) {
-            return enteredDomain === domain;
-        });
 
-        if (!isValid) {
-            emailInput.setCustomValidity('Please use a valid email address.');
-            emailHelp.textContent = 'Please use a valid email address.';
-        } else {
-            emailInput.setCustomValidity('');
-            emailHelp.textContent = ' ';
-        }
-    });
-</script><hr>
+<hr>
+                              
+<div class="col-lg-6 col-lg-12 col-xl-6">
+    <label for="email" class="form-label">Retype Email <font color="red" size="small"><small>(required)</small></font></label>
+    <p><small id="emailHelp" class="form-text text-muted">Please enter a valid email address.</small></p>
+    <input type="email" name="email1"  class="form-control" required>
+    
+</div>
+
+<hr>
 
                                 <div class="col-lg-6 col-lg-12 col-xl-6">
                                     <label for="username" class="form-label">Choose Username <font color="red" size="small"><small>(required)</small></font></label><p><small id="emailHelp" class="form-text text-muted">Please enter your desired username</small></p>
-                                    <input type="text" name="username" id="username" class="form-control" required>
+                                    <input type="text" name="username"  class="form-control" required>
                                 </div>
-<hr>
-                                <div class="col-lg-6 col-lg-12 col-xl-6">
-                                    <label for="phone" class="form-label">Your Phone Number <font color="red" size="small"><small>(required)</small></font></label><p> <small id="emailHelp" class="form-text text-muted">Please enter your whatsapp number</small></p>
-                                 <input type="text" pattern="[0-9]*" title="Please enter number only without the +" name="phone" id="phone" class="form-control" placeholder=" " required>
-                                   
-                                </div>
+
 <hr>
                                 <div class="col-lg-6 col-lg-12 col-xl-6">
                                     <label for="password" class="form-label">Password <font color="red" size="small"><small>(required)</small></font></label><p>
                                         <small id="emailHelp" class="form-text text-muted">Choose a Password</small>
                                     </p>
-                                    <input type="password" name="password" id="password" class="form-control" required>
+                                    <input type="password" name="password"  class="form-control" required>
                                 </div>
 
                                 <div class="col-lg-6 col-lg-12 col-xl-6">
                                     <label for="confirm-password" class="form-label">Confirm Password <font color="red" size="small"><small>(required)</small></font></label><p><small id="emailHelp" class="form-text text-muted">Please retype password</small></p>
-                                    <input type="password" name="password_confirmation" id="confirm-password"
+                                    <input type="password" name="password2" 
                                         class="form-control" required>
                                 </div>
                                 <hr>
-                                <div class="col-lg-6 col-lg-12 col-xl-6">
-                                    
-    <label for="photo" class="custom-file-input-label">Select Profile Photo</label> <font color="red" size="small"><small>(required)</small></font>
-<input type="file" id="photo" name="photo" accept=".jpeg, .jpg, .png" required onchange="displaySelectedImage(this)" style="display:none;">
-<style>.custom-file-input-label {
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-#photo {
-    display: none; /* Hide the original file input */
-}</style>
-    <img id="selectedImage" alt="Selected Image" style="width: 200px; height: 200px; margin-top: 10px; display: none;">
-</div>
-
+                               {foreach from=$pay_accounts item=ps}
+ <div class="form-group">
+     <div class="fxt-transformY-50 fxt-transition-delay-1">
+<input type=text class="form-control" name="pay_account[{$ps.id}]" value="{$ps.account|escape:html}" data-validate="{$ps.validate.func}" data-validate-{$ps.validate.func}="{$ps.validate[$ps.validate.func]}" data-validate-notice="{$ps.validate.notification|escape:html}" placeholder="{$ps.name} Account">
+ </div>
+ </div> 
+ {/foreach}
+{foreach item=p from=$mpay_accounts}
+{foreach item=ps from=$p.accounts}
+ <div class="form-group">
+     <div class="fxt-transformY-50 fxt-transition-delay-1">
+<input type=text class="form-control" placeholder="Your {$p.name} {$ps.name} :"  name="pay_account[{$p.id}][{$ps.name|escape:html}]" value="{$ps.value|escape:html}">
+ </div>
+ </div> 
+ {/foreach}
+{/foreach}
 
                                 
                                 <div class="col-12 mt-2">
                                     <div class="d-flex flex-wrap justify-content-between">
                                         <div class="form-check">
-                                            <input type="checkbox" name="remember" id="remember" class="form-check-input"
-                                                checked>
-                                            <label for="remember" class="form-check-label">I accept all <a 
-                                                    href="../terms.html" class="text--base">Terms & Condition</a> and <a 
-                                                    href="../privacy.html" class="text--base">Privacy Policy</a></label>
+                                            <input class="form-check-input"
+                                                type=checkbox  name=agree value=1 {if $frm.agree}checked{/if} > I agree with <a href="?a=rules">Terms and conditions</a>
+                                            
+                                           
                                         </div><br><br>
                                         
                                     </div>
@@ -147,9 +302,10 @@
                                     
                                 </div><br><br><br><br>
                                 <div class="col-sm-12">
-                                    Already Registered ? <a href="login.html" class="text--base">Sign In</a> |  |  <a href="?a=forgot_password" class="text--base">Forget Password</a>
+                                    Already Registered ? <a href="?a=login" class="text--base">Sign In</a> |  |  <a href="?a=forgot_password" class="text--base">Forget Password</a>
                                 </div>
                             </form>
+                            {/if}
                         </div>
                     </div>
                     <div class="accounts-right bg--blue">

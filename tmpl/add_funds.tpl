@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="logo.tpl"}
 
 {if $frm.say eq 'deposit_success'}
 <h3>The deposit has been successfully saved.</h3>
@@ -11,33 +11,76 @@
 
 <h3>Deposit to Account:</h3>
 <br>
-<form method=post>
-<input type=hidden name=a value=deposit>
-<input type=hidden name=h_id value=-1>
-<table cellspacing=0 cellpadding=2 border=0>
-<tr>
- <th>Processing</th>
- <th>Topup</th>
- <th>Balance</th>
-</tr>
-{foreach from=$ps item=p}
-<tr>
- <td><img src="images/{$p.id}.gif" width="44" height="17" align="absmiddle"> {$p.name}:</td>
- <td><input type=radio name=type value="process_{$p.id}" data-fiat="{$p.fiat}"></td>
- <td>{$p.available|fiat:$p.id}</td>
-</tr>
-{/foreach}
-</table>
+<div style="position: relative; width: 100%; height: 200px; overflow: hidden;">
+  <img src="deposit.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="">
+  <div style="position: absolute; top: 10px; right: 10px; background: rgba(0, 0, 0, 0.5); color: white; font-size: 20px; font-weight: bold; padding: 5px;">Make A Deposit</div></div>
+<div class="dashboard--content-item">
+  <div class="row g-3">
+    <div class="col-12">
+      <div class="card default--card">
+          <div class="card-body">
+                    <form id="deposit-form" action="" method="POST" enctype="multipart/form-data">
+              <input type="hidden" name="_token" value="TKAJDpEIfsXwiR4enQ6gjQLZ1FiEiWGj8jBDxzAx">
+              <div class="row gy-3 gy-md-4">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="form-label required">Select Payment Method <font color="red"><small>(required)</small></font></label>
+                        <select name="type"  class="form-control" required>
+                            <option value="">Select Cryptocurrency</option>
+                              																			 {foreach from=$ps item=p}
+ <option value="process_{$p.id}" data-fiat="{$p.fiat}">{$p.name}</option>
+ {/foreach}		
+                                                                                                                   
+                        </select>
+                    </div>
+                </div>
+
+
+
+            
+                
+                <div class="col-sm-6">
+  <div class="form-group">
+    <label class="form-label required">How Much Do You Want To Deposit <font color="red"><small>(required)</small></font></label>
+    <input name="amount"  class="form-control" autocomplete="off" placeholder="Enter amount in USD" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" type="text" value="" min="1" required>
+  </div>
+</div>
+                
+                
+            
 <br>
+<br>
+     
+      <br>
 
-<table cellspacing=0 cellpadding=2 border=0>
-<tr>
- <td>Amount to Spend ({fiat}):</td>
- <td align=right><input type=text name=amount value='10.00' class=inpts size=15 style="text-align:right;"></td>
-</tr>
-<tr>
- <td colspan=2><input type=submit value="Spend" class=sbmt></td>
-</tr></table>
-</form>
+                <div class="col-sm-12">
+                  <button type="submit" class="cmn--btn bg--primary submit-btn w-100 border-0">CLICK TO COMPLETE DEPOSIT REQUEST</button>
 
-{include file="footer.tpl"}
+                </div>
+              </div>
+
+          </form>
+        </div>
+      </div>
+  </div>
+  </div>
+</div>
+
+
+<style>
+    #qrcode{
+        background: #fff;
+        padding: 1.5rem;
+        /*margin: 2rem 0;*/
+    }
+    
+    .manual-payment-info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        text-align: center;
+    }
+</style>
+
+{include file="footer2.tpl"}

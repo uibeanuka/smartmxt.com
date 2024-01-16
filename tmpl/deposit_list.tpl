@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="logo.tpl"}
 
 <h3>Your deposits:</h3><br>
 
@@ -80,4 +80,4 @@
 <br>
 {/foreach}
 
-{include file="footer.tpl"}
+{include file="footer2.tpl"}

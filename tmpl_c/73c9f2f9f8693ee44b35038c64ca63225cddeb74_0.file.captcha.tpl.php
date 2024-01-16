@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2024-01-12 13:43:56
+<?php /* Smarty version 3.1.27, created on 2024-01-13 07:41:05
          compiled from "/home/u632593968/domains/primeautotrade.com/public_html/tmpl/captcha.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:64678543265a1421c616889_96271957%%*/
+/*%%SmartyHeaderCode:50622313065a23e91e33b26_66256337%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '73c9f2f9f8693ee44b35038c64ca63225cddeb74' => 
     array (
       0 => '/home/u632593968/domains/primeautotrade.com/public_html/tmpl/captcha.tpl',
-      1 => 1705040503,
+      1 => 1705075014,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '64678543265a1421c616889_96271957',
+  'nocache_hash' => '50622313065a23e91e33b26_66256337',
   'variables' => 
   array (
     'action' => 0,
@@ -23,14 +23,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_65a1421c632f33_52542072',
+  'unifunc' => 'content_65a23e91e48c38_51336210',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_65a1421c632f33_52542072')) {
-function content_65a1421c632f33_52542072 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_65a23e91e48c38_51336210')) {
+function content_65a23e91e48c38_51336210 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_myescape')) require_once '/home/u632593968/domains/primeautotrade.com/public_html/inc/libs/smarty3/plugins/modifier.myescape.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '64678543265a1421c616889_96271957';
+$_smarty_tpl->properties['nocache_hash'] = '50622313065a23e91e33b26_66256337';
 if ($_smarty_tpl->tpl_vars['ti']->value['check'][$_smarty_tpl->tpl_vars['action']->value]) {?>
 
 <?php if ($_smarty_tpl->tpl_vars['ti']->value['type'] == 'image') {?>

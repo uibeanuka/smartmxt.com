@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="logo.tpl"}
 
 {literal}
 <script language=javascript>
@@ -173,4 +173,4 @@ To: <select name=month_to class=inpts>
 </center>
 {/if}
 
-{include file="footer.tpl"}
+{include file="footer2.tpl"}

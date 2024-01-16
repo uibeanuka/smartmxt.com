@@ -1,4 +1,20 @@
 {include file="header.tpl"}
+
+
+
+{if $frm.say eq 'invalid_login'}
+<h3>Login error:</h3><br><br>
+
+<div class="error">Your login or password or turing image code is wrong. Please check this information.</div>
+{if $bf_tries.status}
+{if $bf_tries.left == 0}
+<div class="error">You have already maximum times entered incorrectly login info. Your account is blocked. Check your email to active.</div>
+{else}
+<div class="error">You have <b>{$bf_tries.left}</b> tries to entered correctly login information befor blocking.</div>
+{/if}
+{/if}
+
+{/if}
   <!-- Overlayer -->
     <span class="toTopBtn">
         <i class="fas fa-angle-up"></i>
@@ -24,11 +40,14 @@
                                 Welcome Investor, where your financial journey begins. Securely access your account to explore the world of Bitcoin trading and investment. Your success is our priority. Happy trading!
                             </p>
                         </div>
-                        <form class="row gy-4" id="loginform" action="https://{$settings.site_name}/?a=login" method="POST">
-                            
-                            <input type="hidden" name="_token" value="WH1upoShll2PWR0L4o0GpHWsz1W2CG8weFEV6UaI">                            <div class="col-sm-12">
-                                <label for="username" class="form-label">Your Email</label>
-                                <input type="email" name="email" id="username" class="form-control" value="">
+                        <form class="row gy-4" method=post name=mainform onsubmit="return checkform()">
+                          
+<input type=hidden name=a value='do_login'>
+<input type=hidden name=follow value='{$frm.follow}'>
+<input type=hidden name=follow_id value='{$frm.follow_id}'>
+<div class="col-sm-12">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" name="username" id="username" class="form-control" value="">
                             </div>
                            <div class="col-sm-12">
     <label for="password" class="form-label">Your Password</label>
@@ -52,6 +71,7 @@
     }
 }</script>
                             <div class="col-12 mt-2">
+                                {include file="captcha.tpl" action="login"}
                                 <div class="d-flex flex-wrap justify-content-between">
                                     <div class="form-check">
                                         <input type="checkbox" name="remember" id="remember" class="form-check-input"
@@ -85,10 +105,10 @@
 <p class="m-0 text-danger"></p>
 </div>
                             <div class="col-sm-12">
-                                <button class="cmn--btn">Sign In</button>
+                                <button type="submit" class="cmn--btn">Sign In</button>
                             </div>
                             <div class="col-sm-12">
-                                Not Registered Yet ? <a href="register.html" class="text--base">Create an
+                                Not Registered Yet ? <a href="?a=signup" class="text--base">Create an
                                     Account</a>
                             </div>
                         </form>

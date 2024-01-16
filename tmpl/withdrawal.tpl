@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="logo.tpl"}
 
 <h3>Ask for withdrawal:</h3><br>
 
@@ -204,4 +204,4 @@ You have no funds to withdraw.
 {/if}
 
 {/if}
-{include file="footer.tpl"}
+{include file="footer2.tpl"}

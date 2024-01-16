@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2024-01-12 16:15:05
+<?php /* Smarty version 3.1.27, created on 2024-01-13 07:34:08
          compiled from "/home/u632593968/domains/primeautotrade.com/public_html/tmpl/custom/about.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:8352683465a16589d4b6c4_69563131%%*/
+/*%%SmartyHeaderCode:43716229865a23cf0c56c59_08812626%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -13,16 +13,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '8352683465a16589d4b6c4_69563131',
+  'nocache_hash' => '43716229865a23cf0c56c59_08812626',
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_65a16589d63506_62540197',
+  'unifunc' => 'content_65a23cf0c69ae5_83863354',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_65a16589d63506_62540197')) {
-function content_65a16589d63506_62540197 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_65a23cf0c69ae5_83863354')) {
+function content_65a23cf0c69ae5_83863354 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '8352683465a16589d4b6c4_69563131';
+$_smarty_tpl->properties['nocache_hash'] = '43716229865a23cf0c56c59_08812626';
 echo $_smarty_tpl->getSubTemplate ("header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0);
 ?>
 

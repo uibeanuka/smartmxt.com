@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2024-01-12 16:35:11
+<?php /* Smarty version 3.1.27, created on 2024-01-14 06:08:41
          compiled from "/home/u632593968/domains/primeautotrade.com/public_html/tmpl/header.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:44229831965a16a3ff1c390_20340927%%*/
+/*%%SmartyHeaderCode:201022392165a37a695a73e0_66320099%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -13,21 +13,21 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '44229831965a16a3ff1c390_20340927',
+  'nocache_hash' => '201022392165a37a695a73e0_66320099',
   'variables' => 
   array (
     'settings' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_65a16a4002b7e5_54260078',
+  'unifunc' => 'content_65a37a695fb359_97681455',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_65a16a4002b7e5_54260078')) {
-function content_65a16a4002b7e5_54260078 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_65a37a695fb359_97681455')) {
+function content_65a37a695fb359_97681455 ($_smarty_tpl) {
 if (!is_callable('smarty_modifier_myescape')) require_once '/home/u632593968/domains/primeautotrade.com/public_html/inc/libs/smarty3/plugins/modifier.myescape.php';
 
-$_smarty_tpl->properties['nocache_hash'] = '44229831965a16a3ff1c390_20340927';
+$_smarty_tpl->properties['nocache_hash'] = '201022392165a37a695a73e0_66320099';
 ?>
 <!DOCTYPE html>
 <html lang="en">

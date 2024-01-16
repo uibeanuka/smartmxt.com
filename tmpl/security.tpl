@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="logo.tpl"}
 
 <h3>Advanced login security settings:</h3><br><br>
 
@@ -66,4 +66,4 @@ function checkform() {
 {/literal}
 {/if} {* use_tfa *}
 
-{include file="footer.tpl"}
+{include file="footer2.tpl"}
